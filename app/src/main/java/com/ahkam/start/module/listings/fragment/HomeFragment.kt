@@ -15,6 +15,7 @@ import com.ahkam.start.databinding.FragmentHomeBinding
 import com.ahkam.start.presentation.di.Injector
 import com.ahkam.start.presentation.item.ItemViewModel
 import com.ahkam.start.presentation.item.ItemViewModelFactory
+import com.google.android.material.appbar.AppBarLayout
 import com.synnapps.carouselview.ImageListener
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
@@ -53,6 +54,17 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.post {
+            val toolbarHeight = binding.toolbar.height
+            val appbarHeight = binding.appBar.height
+            val whiteBgTopCurveRadius = resources.getDimensionPixelSize(R.dimen.large_margin)
+            val threshold = appbarHeight - toolbarHeight - whiteBgTopCurveRadius
+            binding.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+                binding.collapsingToolbar.visibility =
+                    if (verticalOffset <= -threshold) View.VISIBLE
+                    else View.GONE
+            })
+        }
         setSliders()
         fetchData()
     }
