@@ -1,7 +1,6 @@
 package com.ahkam.start.data.model
 
 
-import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class Item :Serializable {

@@ -26,8 +26,27 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
 
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.ahkam.start.module.listingdetails.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="Name" />
+        <argument
+            android:name="price"
+            app:argType="string"
+            android:defaultValue="Price" />
+        <argument
+            android:name="image"
+            app:argType="string"
+            android:defaultValue="Image" />
+    </fragment>
 
 
 </navigation>

@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs.kotlin'
+    id 'androidx.navigation.safeargs'
 
 }
 
@@ -105,6 +105,11 @@ dependencies {
 
 
     implementation "com.synnapps:carouselview:0.1.5"
+
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+
+    implementation 'com.todkars:shimmer-recyclerview:0.4.1'
 
 
 //    //Dagger

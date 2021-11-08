@@ -8,8 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ahkam.start.ItemAdapter
+import com.ahkam.start.module.listings.adapter.ItemAdapter
 import com.ahkam.start.R
 import com.ahkam.start.databinding.FragmentHomeBinding
 import com.ahkam.start.presentation.di.Injector
@@ -17,7 +18,6 @@ import com.ahkam.start.presentation.item.ItemViewModel
 import com.ahkam.start.presentation.item.ItemViewModelFactory
 import com.google.android.material.appbar.AppBarLayout
 import com.synnapps.carouselview.ImageListener
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -84,8 +84,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun initRecyclerView(){
+        binding.mShimmerViewContainer.startShimmer()
         binding.itemList.layoutManager = LinearLayoutManager(activity)
         adapter = ItemAdapter()
+        {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment()
+            action.name = it.name.toString()
+            action.price = it.price.toString()
+            action.image = it.image_urls?.get(0).toString()
+
+            findNavController().navigate(action)
+        }
         binding.itemList.adapter = adapter
         showItem()
 
@@ -96,8 +105,11 @@ class HomeFragment : Fragment() {
         responseLiveData.observe(viewLifecycleOwner, Observer {
             if(it!=null)
             {
+                binding.itemList.visibility = View.VISIBLE
                 adapter.setList(it)
                 adapter.notifyDataSetChanged()
+                binding.mShimmerViewContainer.stopShimmer()
+                binding.mShimmerViewContainer.visibility = View.GONE
             }
         })
     }

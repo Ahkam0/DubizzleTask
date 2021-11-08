@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="380dp"
+    android:layout_marginStart="17dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="17dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/gray_round_bg"
+    android:padding="5dp">
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/ItemImage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/white_round_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius_top_left="20dp"
+        app:riv_corner_radius_top_right="20dp" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/thmbnailBG"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/gray_round_bg"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/ItemImage"
+        app:layout_constraintEnd_toEndOf="@id/ItemImage"
+        app:riv_corner_radius_bottom_left="10dp"
+        app:riv_corner_radius_bottom_right="10dp"
+        app:riv_corner_radius_top_left="10dp"
+        app:riv_corner_radius_top_right="10dp" />
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/thmbnail"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:scaleType="centerCrop"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/thmbnailBG"
+        app:layout_constraintEnd_toEndOf="@id/thmbnailBG"
+        app:layout_constraintStart_toStartOf="@id/thmbnailBG"
+        app:layout_constraintTop_toTopOf="@id/thmbnailBG"
+        app:riv_corner_radius_bottom_left="10dp"
+        app:riv_corner_radius_bottom_right="10dp"
+        app:riv_corner_radius_top_left="10dp"
+        app:riv_corner_radius_top_right="10dp" />
+
+
+    <TextView
+        android:id="@+id/ItemName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ItemImage"
+        android:background="@color/white"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif-light"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/ItemImage" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CardView"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="23dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ItemName">
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
